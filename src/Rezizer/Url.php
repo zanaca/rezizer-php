@@ -109,7 +109,7 @@ class Url {
             return null;
         }
 
-        $hash = hash_hmac('sha1', $this->buildPath(), $this->secret);
+        $hash = hash_hmac('sha1', $this->buildPath(), $this->secret, true);
         $hash = base64_encode($hash);
         $hash = str_replace('+', '-', $hash);
         $hash = str_replace('/', '_', $hash);
