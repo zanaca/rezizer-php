@@ -1,0 +1,15 @@
+{
+    "name": "rezizer/url",
+    "description": "Rezizer URL generator - Building optmized image URLs",
+    "version": "0.1.0",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Rezizer\\Url": ""
+        }
+    },
+    "require": {
+        "php": "^5.3.3 || ^7.0"
+    }
+}
