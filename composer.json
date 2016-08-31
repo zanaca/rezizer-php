@@ -2,12 +2,31 @@
     "name": "rezizer/url",
     "description": "Rezizer URL generator - Building optmized image URLs",
     "version": "0.1.0",
+    "homepage": "http://www.rezizer.com",
     "type": "library",
     "license": "MIT",
     "autoload": {
         "psr-4": {
             "Rezizer\\Url": ""
         }
+    },
+    "author": [
+        {
+            "name": "Zanaca",
+            "email": "zanaca@gmail.com"
+        }
+    ],
+    "keywords": [
+      "resize",
+      "crop",
+      "optmize",
+      "thumbor",
+      "imageurl",
+      "rezizer"
+    ],
+    "support": {
+        "source": "https://github.com/zanaca/rezizer-php",
+        "issues": "https://github.com/zanaca/rezizer-php/issues"
     },
     "require": {
         "php": "^5.3.3 || ^7.0"
