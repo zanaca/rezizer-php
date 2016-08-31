@@ -6,8 +6,8 @@
     "type": "library",
     "license": "MIT",
     "autoload": {
-        "psr-4": {
-            "Rezizer\\": "Rezizer/"
+        "psr-0": {
+            "Rezizer": "src"
         }
     },
     "author": [
@@ -29,6 +29,5 @@
         "issues": "https://github.com/zanaca/rezizer-php/issues"
     },
     "require": {
-        "php": "^5.3.3 || ^7.0"
     }
 }

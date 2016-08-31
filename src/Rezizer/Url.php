@@ -1,16 +1,16 @@
 <?php
 
-namespace Rezizer\Url;
+namespace Rezizer;
 
 
-class RezizerUrl {
+class Url {
     private $serverUrl = null;
     private $secret = null;
     private $operations = [];
     private $rawImageUrl = null;
 
-    private $concatenatedOperations = ['tint', 'background', 'blur', 'format', 'max-age', 'max-kb',
-                                    'overlay', 'quality', 'rotate', 'align'];
+    private $concatenatedOperations = ['tint', 'background', 'blur', 'format', 'max-age', 'max-kb', 'overlay', 'quality', 'rotate', 'align', 'retina'];
+
     private $simpleOperations = ['distort', 'extend', 'fit', 'fit-in', 'flip', 'flop', 'tile',
                               'grayscale', 'invert', 'map', 'max', 'min', 'progressive', 'round'];
 
@@ -44,16 +44,17 @@ class RezizerUrl {
         }
 
         foreach($this->operations as $operation => $value) {
-            if ($operation === 'crop') {
+            if (in_array($operation, ['retina'])) {
+                continue;
+            } else if ($operation === 'crop') {
                 $parts[] = implode($value, ',');
             } else if ($operation === 'resize') {
                 $command = implode($value, 'x');
-                if (in_array('retina', $this->operations)) {
-                    $command.= '@' . $this->operations['retina'];
+                if (array_key_exists('retina', $this->operations)) {
+                    $command.= '@' . $this->operations['retina'] . 'x';
                 }
 
-                unset($this->operations['retina']);
-                $parts[] = implode($command);
+                $parts[] = $command;
             } else if ($operation === 'align') {
                 $alignment = strtolower($value);
 
@@ -82,22 +83,20 @@ class RezizerUrl {
                     case 'center':
                     case 'smart':
                         break;
-                    default:
-                        return false;
-                        break;
                 }
 
                 $parts[] = $alignment;
+
             } else if ($operation === 'face') {
                 $command = 'face';
                 if ($value === 'focused') {
                     $command.= ':focused';
                 }
                 $parts[] = $command;
-            } else if (in_array($value, $this->concatenatedOperations)) {
-                $parts[] = strtolower($key) . ':' . $value;
+            } else if (in_array($operation, $this->concatenatedOperations)) {
+                $parts[] = strtolower($operation) . ':' . $value;
             } else {
-                $parts[] = strtolower($key);
+                $parts[] = strtolower($operation);
             }
         }
 
@@ -132,7 +131,7 @@ class RezizerUrl {
 
 
     public function with($url = null) {
-        $this->rawImageUrl = url;
+        $this->rawImageUrl = $url;
 
         return $this;
     }
@@ -142,7 +141,7 @@ class RezizerUrl {
         if (!is_numeric($h) || !is_numeric($w)) {
             throw new Error('Either the height or the width are not valid integers. width:' . $w . ' height:' . $h);
         }
-        $this->operations['resize'] = [w, h];
+        $this->operations['resize'] = [$w, $h];
 
         return $this;
     }
@@ -193,14 +192,18 @@ class RezizerUrl {
             }
         }
 
-        foreach ($this->concatenatedOperations as $operation => $value) {
+        foreach ($this->concatenatedOperations as $operation) {
             if ($method === 'overlay') {
                 continue;
             }
             if ($operation === $method) {
-                $this->operations[$method] = preg_replace('/[^0-9a-zA-Z,\.]/g', '', $value);
+                $this->operations[$method] = preg_replace('/[^0-9a-zA-Z,\.]/', '', implode($values, ','));
                 return $this;
             }
         }
+    }
+
+    public function __toString() {
+        return $this->generate();
     }
 }
