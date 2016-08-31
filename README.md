@@ -10,7 +10,7 @@ Add `rezizer/url` as dependency in `composer.json`.
 $secretKey = 'OhMyG0shWhatASecretKey!';
 
 // start the generator
-$rezizerUrl = new Thumbor\Url('http://your.rezizer.url:port', $secretKey);
+$rezizerUrl = new Rezizer\Url('http://your.rezizer.url:port', $secretKey);
 
 
 // get the Rezized url
