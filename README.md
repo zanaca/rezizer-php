@@ -9,7 +9,7 @@ Add `rezizer/url` as dependency in `composer.json`.
 ```php
 $secretKey = 'OhMyG0shWhatASecretKey!';
 
-// start the generator
+// start the generatorf
 $rezizerUrl = new Rezizer\Url('http://your.rezizer.url:port', $secretKey);
 
 
@@ -59,7 +59,7 @@ Usage: `.fit()`
 
 ## flip
 - Flips the image vertically.
-Usage: `.fit()`
+Usage: `.flip()`
 
 ## flop
 - Flops the image horizontally.
@@ -133,4 +133,4 @@ Usage: `.tile()`
 ## tint
 - Colorizes the image with a color name format, #RRGGBB format or 255,255,255,1.0 format , where each channel is an integer from 0 to 255 and the alpha channel sits between 0 and 1.
 Available options: color name (`red`, `purple`), RGB hex color code (`FF0000`, `800080`).
-Usage: `.background(128, 0, 128, .5)` or `.background('FF0000')`
+Usage: `.tint(128, 0, 128, .5)` or `.tint('FF0000')`
