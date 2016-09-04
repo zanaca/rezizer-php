@@ -23,14 +23,20 @@ $imageUrl = $rezizerUrl->with('http://your.domain.url/foo/bar.jpg')->resize(100,
 Usage: `.north()`, `.east()`, `.south()`, `.west()`, `.northeast()`, `.southeast()`, `.southwest()`, `.northwest()`, `.smart()` or `.center()`.
 
 ## background
-- Sets the background color of the image in color name format, #RRGGBB format or 255,255,255 format , where each channel is an integer from 0 to 255. You can specify `blur` to set the background as a distorted and blurred version of the image or `auto` to set the color from the most important color of the image.
-Available options: color name (`red`, `purple`), RGB hex color code (`FF0000`, `800080`), `blur` or `auto`.
+- Sets the background color of the image in color name format, #RRGGBB format or 255,255,255 format , where each channel is an integer from 0 to 255. You can specify `blurry` to set the background as a distorted and blurry version of the image or `auto` to set the color from the most important color of the image.
+Available options: color name (`red`, `purple`), RGB hex color code (`FF0000`, `800080`), `blurry` or `auto`.
 Usage: `.background('red')`
 
 ## blur
 - Blurs the image to value from 1 to 1000.
 Available range: `1` to `1000`.
 Usage: `.blur(2)`
+
+## colorFilter
+- Passes a color correction filter on the image.
+Available filters: vintage, lomo, clarity, sinCity, sunrise, crossProcess, orangePeel, love, grungy, sepia, jarques, pinhole, oldBoot, glowingSun, hazyDays, herMajesty, nostalgia, hemingway, concentrate, xpro2, lo-fi, rise, hudson, earlybird, nashville.
+Usage: `.colorFilter('lomo')`
+
 
 ## crop
 - Crops a region of the image specified by the top-left coordinate and the bottom-right coordinate of the image. You must specify the four points: `.crop(100, 200, 300, 400)` where `100` is the top position, `200` is the right position, the `300` is the bottom position and `400` is the left position.
@@ -59,7 +65,7 @@ Usage: `.fit()`
 
 ## flip
 - Flips the image vertically.
-Usage: `.fit()`
+Usage: `.flip()`
 
 ## flop
 - Flops the image horizontally.
@@ -133,4 +139,4 @@ Usage: `.tile()`
 ## tint
 - Colorizes the image with a color name format, #RRGGBB format or 255,255,255,1.0 format , where each channel is an integer from 0 to 255 and the alpha channel sits between 0 and 1.
 Available options: color name (`red`, `purple`), RGB hex color code (`FF0000`, `800080`).
-Usage: `.background(128, 0, 128, .5)` or `.background('FF0000')`
+Usage: `.tint(128, 0, 128, .5)` or `.tint('FF0000')`

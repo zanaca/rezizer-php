@@ -9,7 +9,7 @@ class Url {
     private $operations = [];
     private $rawImageUrl = null;
 
-    private $concatenatedOperations = ['tint', 'background', 'blur', 'format', 'max-age', 'max-kb', 'overlay', 'quality', 'rotate', 'align', 'retina'];
+    private $concatenatedOperations = ['tint', 'background', 'blur', 'format', 'max-age', 'max-kb', 'overlay', 'quality', 'rotate', 'align', 'retina', 'color-filter'];
 
     private $simpleOperations = ['distort', 'extend', 'fit', 'fit-in', 'flip', 'flop', 'tile',
                               'grayscale', 'invert', 'map', 'max', 'min', 'progressive', 'round'];
@@ -93,12 +93,15 @@ class Url {
                     $command.= ':focused';
                 }
                 $parts[] = $command;
+            } else if ($operation === 'color-filter') {
+                $parts[] = $value;
             } else if (in_array($operation, $this->concatenatedOperations)) {
                 $parts[] = strtolower($operation) . ':' . $value;
             } else {
                 $parts[] = strtolower($operation);
             }
         }
+        $this->operations = [];
 
         return implode($parts, '/');
     }
@@ -183,6 +186,8 @@ class Url {
             $method = 'max-kb';
         } else if ($method === 'maxAge') {
             $method = 'max-age';
+        } else if ($method === 'colorFilter') {
+            $method = 'color-filter';
         }
 
         foreach ($this->simpleOperations as $operation) {
