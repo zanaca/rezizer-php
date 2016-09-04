@@ -34,7 +34,7 @@ Usage: `.blur(2)`
 
 ## colorFilter
 - Passes a color correction filter on the image.
-Available filters: vintage, lomo, clarity, sinCity, sunrise, crossProcess, orangePeel, love, grungy, sepia, jarques, pinhole, oldBoot, glowingSun, hazyDays, herMajesty, nostalgia, hemingway, concentrate, xpro2, lo-fi, rise, hudson, earlybird, nashville.
+Available filters: `vintage`, `lomo`, `clarity`, `sinCity`, `sunrise`, `crossProcess`, `orangePeel`, `love`, `grungy`, `sepia`, `jarques`, `pinhole`, `oldBoot`, `glowingSun`, `hazyDays`, `herMajesty`, `nostalgia`, `hemingway`, `concentrate`, `xpro2`, `lo-fi`, `rise`, `hudson`, `earlybird`, `nashville`.
 Usage: `.colorFilter('lomo')`
 
 
