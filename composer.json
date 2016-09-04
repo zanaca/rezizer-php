@@ -1,7 +1,7 @@
 {
     "name": "rezizer/url",
     "description": "Rezizer URL generator - Building optmized image URLs",
-    "version": "0.2.0",
+    "version": "0.2.1",
     "homepage": "http://www.rezizer.com",
     "type": "library",
     "license": "MIT",
