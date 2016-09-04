@@ -9,7 +9,7 @@ Add `rezizer/url` as dependency in `composer.json`.
 ```php
 $secretKey = 'OhMyG0shWhatASecretKey!';
 
-// start the generator
+// start the generatorf
 $rezizerUrl = new Rezizer\Url('http://your.rezizer.url:port', $secretKey);
 
 
